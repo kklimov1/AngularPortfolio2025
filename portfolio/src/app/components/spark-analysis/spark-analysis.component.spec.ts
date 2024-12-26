@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { StockComponent } from './stock.component';
+import { SparkAnalysisComponent } from './spark-analysis.component';
 
-describe('StockComponent', () => {
-  let component: StockComponent;
-  let fixture: ComponentFixture<StockComponent>;
+describe('SparkAnalysisComponent', () => {
+  let component: SparkAnalysisComponent;
+  let fixture: ComponentFixture<SparkAnalysisComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [StockComponent]
+      imports: [SparkAnalysisComponent]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(StockComponent);
+    fixture = TestBed.createComponent(SparkAnalysisComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

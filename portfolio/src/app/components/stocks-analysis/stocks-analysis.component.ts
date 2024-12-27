@@ -1,8 +1,9 @@
 import { Component } from '@angular/core';
+import { NavbarComponent } from "../../navbar/navbar.component";
 
 @Component({
   selector: 'app-stocks-analysis',
-  imports: [],
+  imports: [NavbarComponent],
   templateUrl: './stocks-analysis.component.html',
   styleUrl: './stocks-analysis.component.css'
 })

@@ -1,1 +1,76 @@
 <app-navbar></app-navbar>
+<div class="stocks-body">
+    <h1>Stock Predictor: Analysis</h1>
+    <p>
+        <b>Purpose</b>: To develop an algorithm that can outperform a buy and hold strategy of indices based on the NASDAQ, S&P 500, gold,
+        oil, platinum, silver, or palladium.
+    </p>
+
+    <div class="inline-block">
+        <p id="github-text">Find the entire code and explanation here:</p>
+        &nbsp;
+            <a href="https://github.com/kklimov1/PriceRegressionPredictor" class="image-button">
+                <img src="images/GitHub_Wordmark_Dark.png" alt="GitHub Logo" class="ghub-logo">
+            </a>
+    </div>
+    
+    <br>
+    <h2>Intro</h2>
+    <p>
+        According to NASDAQ, roughly $400 billion is traded every day in the stock market. Countless financial organizations, called investment funds, exist on the premise that they can grow your investment faster than the competition. 
+        However, there is much randomness within the stock market, and as such, many have sought <i>passive</i> investment instruments called Index funds. These funds do not use any sort of prediction mechanism, as they simply try to mimic 
+        the returns of a pool of individual assets. The DOW consists of 30 stocks, the NASDAQ index consists of 100 of the most traded stocks, while the S&P 500 tracks 500 large U.S. based companies. The majority of investors are relatively passive 
+        given that they <i>buy and hold</i> stocks for a prolonged period of time. As a result, we will use the buy and hold strategy of a number of indixes and commodities (oil, silver, gold, etc.) to use as our basis for comparison when determining the 
+        effectiveness of our investing algorithm.
+    </p>
+    <p>
+        In this project, we will try to determine the way in which index and commodity price movements are related to one-another and economic data such as GDP changes, whether or not we can develop a model to outperform the returns of buying and holding an index or commodity,
+        and how likely is it that our models' returns can be replicated by pure randomness.
+    </p>
+    <p>
+        The fundamental aspects of our analysis and model are to be as follows:
+    </p>
+    <ul>
+        <li>Log returns are more important than the prices of commodities</li>
+        <li>Creating a Linear Regression Model that predicts the following 24-hours return of a given index/commodity implies that we will invest in said index/commodity. 
+        </li>
+        <li>
+            Actualized return will be derived by adding the log return for the 24 hour periods of a given index/commodity 
+            for those instances when our model predicted a positive log return.
+        </li>
+    </ul>
+    <br>
+    <h2>Project</h2>
+    <p>We will be using a time-series <a href="https://www.kaggle.com/datasets/franciscogcc/financial-data">Kaggle Dataset</a> that represents the open/high/low/close price of an S&P 500, NASDAQ 100, Silver, Platinum, Oil, Palladium, and Gold index as well as 
+        the most recent economic data such as CPI, US Interest Rates, GDP, US Dollar to Swiss Franc rate, and a Euro to US Dollar rate. Each index open/high/low/close price is determined by a tradeable exchange-traded fund (ETF). The actual ETF ticker names used for this dataset are as follows:
+        SPY, QQQ, SIVR, PPLT, USO, PALL, and GLD. 
+    </p>
+    <p>
+        Typically, one does not work with local files, but rather with data stored in the cloud. A local CSV file is currently used, but this will be transferred to AWS or GCP.
+    </p>
+
+    <p>
+        Having imported our dataset, let's take a look at a sample of our data. 
+    </p>
+    <div class="img-container">
+        <img src="images/stocksRegression/head_1.png" class="img" id="header">
+    </div>
+    <p>
+        Now let's check the column data types and number of NULL values. There are far too many columns to fit into our output neatly, so I created my own function to show every second column. To view the full output, feel free to reference the GitHub.
+    </p>
+    <div class="img-container">
+        <img src="images/stocksRegression/every_second.png" class="img" id="stock_2_info">
+    </div>
+    <p>What can we tell by looking at the data?</p>
+    <ul>
+        <li>Date is not of date type</li>
+        <li>NULLs. There are entire days with empty rows (probably weekends), and variables with many NULL entries.</li>
+        <li>Non-standardized prices and volume</li>
+    </ul>
+    <p>
+        What can be gathered when looking at the dataframe sample above? The close price of an index on one day does not equal the open price of said index on the following day. In order to account for the change in price after trading hours, we will look at the log returns
+        of the close prices only. We will choose to use log returns of closing prices, volume, and the log difference of high/low within the same trading day. This addresses the issue of scaling our values to an extent. But what are the charecteristics of
+        log differences that are so appealing to our use case? I will show you these characteristics in detail.
+    </p>
+    <br> 
+</div>
